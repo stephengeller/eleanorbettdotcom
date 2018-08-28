@@ -5,17 +5,13 @@ var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 
 var index = require('./routes/index')
-var reactapp = require('./routes/reactapp')
-var bowling = require('./routes/bowling')
-var games = require('./routes/games')
-var monthlymissout = require('./routes/monthlymissout')
 
 var expressValidator = require('express-validator')
 var session = require('express-session')
 
 var app = express()
 
-app.set('views', __dirname + '/views/', __dirname + '/views/blog')
+app.set('views', __dirname + '/views/')
 app.set('view engine', 'ejs')
 
 app.use(logger('dev'))
@@ -35,10 +31,6 @@ app.use(
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', index)
-app.use('/games', games)
-app.use('/bowling', bowling)
-app.use('/reactapp', reactapp)
-app.use('/monthlymissout', monthlymissout)
 
 app.use(function(req, res, next) {
 	var err = new Error('Not Found')
